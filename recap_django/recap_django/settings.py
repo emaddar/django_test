@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-2=p)b=1m)*@6&r5#bihf(w464ldc#1^@z)kpl731zrlxq1pa3(
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["django-spotipy-1.onrender.com", "fastapi-model1.onrender.com", "django-spotipy-test.onrender.com"]
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ["https://fastapi-model1.onrender.com/predict", "https://fastapi-model1.onrender.com/", "https://django-spotipy-1.onrender.com/"]
 
 
