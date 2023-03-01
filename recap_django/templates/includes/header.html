@@ -43,10 +43,10 @@
             <a href="{% url 'about' %}"
               class="text-white  px-1 py-2 md:px-3 rounded-md text-base font-medium uppercase">About</a>
 
-            {% if user.is_authenticated %}
+            {% comment %} {% if user.is_authenticated %} {% endcomment %}
 
             
-            <span class="text-white  px-1 py-2 md:px-3 rounded-md text-base font-medium uppercase"> Logged as :
+            {% comment %} <span class="text-white  px-1 py-2 md:px-3 rounded-md text-base font-medium uppercase"> Logged as :
               {{user.get_username}}</span>
             <a class="text-white  px-1 py-2 md:px-3 rounded-md text-base font-medium uppercase"
               href="{% url 'logout' %}?next={{request.path}}"> log out</a>
@@ -55,7 +55,7 @@
               class="text-white  px-1 py-2 md:px-3 rounded-md text-base font-medium uppercase">Login</a>
             <a href="{% url 'signup' %}"
               class="text-white  px-1 py-2 md:px-3 rounded-md text-base font-medium uppercase">Sign-up</a>
-            {% endif %}
+            {% endif %} {% endcomment %}
 
           </div>
         </div>
@@ -76,7 +76,7 @@
       <a href="{% url 'about' %}"
         class="text-white  block px-3 py-2 rounded-md text-base font-medium uppercase">About</a>
 
-      {% if user.is_authenticated %}
+      {% comment %} {% if user.is_authenticated %}
 
       <span class="text-white  block px-3 py-2 rounded-md text-base font-medium uppercase"> Logged as :
         {{user.get_username}}</span>
@@ -87,7 +87,7 @@
         class="text-white  block px-3 py-2 rounded-md text-base font-medium uppercase">Login</a>
       <a href="{% url 'signup' %}"
         class="text-white  block px-3 py-2 rounded-md text-base font-medium uppercase">Sign-up</a>
-      {% endif %}
+      {% endif %} {% endcomment %}
     </div>
   </div>
 </nav>
