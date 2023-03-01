@@ -46,7 +46,7 @@ def about(request):
 #################################################################################################################################
 
 
-@login_required     
+    
 def result(request):
     Track_Name = request.GET['Track_Name']  
     Artiste_Name = request.GET['Artiste_Name']  
