@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<main class="flex justify-center items-center mt-8">
+
+
+
+  <div class="isolate bg-white py-12 px-6 sm:py-32 lg:px-8 w-1/2 rounded-lg shadow-2xl">
+
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><i class="fa-sharp fa-solid fa-music"></i>
+        Les Gens N'ont Plus de Goût<i class="fa-sharp fa-solid fa-music"></i></h2>
+      <p class="mt-2 text-lg leading-8 text-gray-600"></p>
+    </div>
+    <form action="result" class="mx-auto mt-16 max-w-xl sm:mt-20">
+      {% csrf_token %}
+      <div class="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
+        <div>
+
+          <label for="floatingInputGrid-name" class="block text-sm font-semibold leading-6 text-gray-900">Track
+            Name</label>
+          <div class="mt-2.5">
+            <input type="text" id="floatingInputGrid" placeholder="Ex: Take On Me*" name="Track_Name"
+              class="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+              required>
+          </div>
+        </div>
+        <div>
+
+          <label for="floatingInputGrid" class="block text-sm font-semibold leading-6 text-gray-900">Artiste
+            Name</label>
+          <div class="mt-2.5">
+            <input type="text"
+              class="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+              id="floatingInputGrid" placeholder="Ex: Red Hot Chili Peppers*" name="Artiste_Name" required>
+          </div>
+        </div>
+        <div class="sm:col-span-2">
+
+          <label for="floatingInputGrid" class="block text-sm font-semibold leading-6 text-gray-900">Genre</label>
+          <div class="mt-2.5">
+            <input type="text"
+              class="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
+              id="floatingInputGrid" placeholder="Ex: Jazz*" name="Genre" required>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <button type="submit"
+          class="block w-full rounded-md bg-bordeaux px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bordeaux">Submit</button>
+      </div>
+    </form>
+  </div>
+
+
+
+</main>
+
+
+{% endblock content %}

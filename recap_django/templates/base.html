@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Les Gens N'ont Plus de Goût</title>
+
+  <script src="https://kit.fontawesome.com/8f51521eb7.js" crossorigin="anonymous"></script>
+
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+  -->
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bordeaux': '#6D071A',
+            'black-gray': '#1C1C1C',
+            'linkedin': '#0e76a8',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@100;500&display=swap" rel="stylesheet">
+
+  <style>
+    a,
+    p,
+    span,
+    form {
+      font-family: 'Grandstander', cursive !important;
+    }
+  </style>
+</head>
+
+
+
+
+
+
+<body class="bg-gray-800">
+
+  {% include 'includes/header.html' %}
+  {% block content %}
+  {% endblock %}
+  
+ {% include 'includes/footer.html' %}
+  <script>
+    let buttonMenuBurger = document.getElementById("menuBurger");
+    const svgMenu = document.querySelectorAll("#menuBurger svg");
+    let menuMobile = document.getElementById("mobile-menu");
+
+    buttonMenuBurger.addEventListener('click', (e) => {
+      for (let child of svgMenu) {
+        child.classList.toggle("block");
+        child.classList.toggle("hidden");
+      }
+      menuMobile.classList.toggle("hidden");
+    })
+
+    const linkMenuMobile = document.querySelectorAll("#mobile-menu div a");
+    for (let link of linkMenuMobile) {
+      link.addEventListener('click', (e) => {
+        for (let child of svgMenu) {
+          child.classList.toggle("block");
+          child.classList.toggle("hidden");
+        }
+        menuMobile.classList.toggle("hidden");
+      })
+    }
+    let navLinks = document.getElementById("navLinks");
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.id != "navLinks") {
+        for (let child of navLinks.children) {
+          child.classList.remove("bg-gray-900");
+        }
+        e.target.classList.add("bg-gray-900");
+
+      }
+    })
+
+  </script>
+</body>
+
+</html>

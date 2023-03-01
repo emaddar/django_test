@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  web:
+    depends_on:
+      - postgres_db
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+  postgres_db:
+    image: postgres   # docker exec -it recap_django-postgres_db-1 psql -U myuser dockerdc  # select username from base_user;
+    restart: always
+    # command: -p 5433
+    platform: linux/amd64
+    env_file:
+      - .env
+    # expose:
+    #   - 5433
+    # ports:
+    #   - 5433:5433
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+
+
+
+# docker compose build
+# docker compose up 
+
+# in Docker shell :
+# python manage.py shell
+# from django.conf import settings
+# settings.DATABASES 
