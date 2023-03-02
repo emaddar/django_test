@@ -11,7 +11,7 @@
 
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"><i class="fa-sharp fa-solid fa-music"></i>
-        Les Gens N'ont Plus de Goût<i class="fa-sharp fa-solid fa-music"></i></h2>
+        Les Gens N'ont Plus de Goût <i class="fa-sharp fa-solid fa-music"></i></h2>
       <p class="mt-2 text-lg leading-8 text-gray-600"></p>
     </div>
     <form action="result" class="mx-auto mt-16 max-w-xl sm:mt-20">
@@ -40,12 +40,16 @@
         <div class="sm:col-span-2">
 
           <label for="floatingInputGrid" class="block text-sm font-semibold leading-6 text-gray-900">Genre</label>
-          <div class="mt-2.5">
-            <input type="text"
-              class="block w-full rounded-md border-0 py-2 px-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
-              id="floatingInputGrid" placeholder="Ex: Jazz*" name="Genre" required>
-
-          </div>
+          
+            <select class="block appearance-none w-full py-2 px-4 pr-8 leading-tight rounded-l-md border border-gray-400 bg-white focus:outline-none focus:bg-white focus:border-gray-500" id="floatingInputGrid" name="Genre" >
+              {% for genre in genres %}
+              {% if genre == "pop" %}
+              <option value={{ genre }} selected>{{ genre }}</option>
+              {% else %}
+              <option value={{ genre }}>{{ genre }}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
         </div>
       </div>
 

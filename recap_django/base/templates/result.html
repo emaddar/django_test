@@ -6,32 +6,6 @@
 
 
 
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  th,
-  td {
-    text-align: left;
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
-  }
-
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-</style>
-
-
-
-
-
-
-
-
 <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
   <div class="bg-white rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 ">
     <div class="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
@@ -49,7 +23,7 @@
         </div>
         <div class="flex gap-4">
           <button
-            class="mt-8 bg-white border border-transparent rounded-md shadow px-5 py-3 inline-flex items-center text-sm font-medium text-carmine hover:bg-indigo-50"
+            class="block w-full rounded-md bg-bordeaux px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-gray-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bordeaux"
             id="detailsButton" onclick="toggleDetails()">More</button>
           <audio id="myAudio" controls src="{{track_dict_list.0.preview_url }}"></audio>
         </div>
@@ -58,123 +32,30 @@
     <div class="-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
       <img class="rounded-md object-cover" src="{{track_dict_list.0.image_url}}" alt="">
     </div>
-    <div id="detailsTable" style="display: none;">
-
-      <table>
-        <tr>
-          <th>Variable Name</th>
-          <th>Value</th>
-        </tr>
-        <tr>
-          <td>Artist Name</td>
-          <td>{{track_dict_list.0.artist_name }}</td>
-        </tr>
-        <tr>
-          <td>Album Name</td>
-          <td>{{track_dict_list.0.album_name }}</td>
-        </tr>
-        <tr>
-          <td>Album ID</td>
-          <td>{{track_dict_list.0.album_id }}</td>
-        </tr>
-        <tr>
-          <td>Release Date</td>
-          <td>{{track_dict_list.0.release_date }}</td>
-        </tr>
-        <tr>
-          <td>Track Name</td>
-          <td>{{track_dict_list.0.track_name }}</td>
-        </tr>
-        <tr>
-          <td>Track ID</td>
-          <td>{{track_dict_list.0.track_id }}</td>
-        </tr>
-        <tr>
-          <td>Duration (ms)</td>
-          <td>{{track_dict_list.0.duration_ms }}</td>
-        </tr>
-        <tr>
-          <td>Explicit</td>
-          <td>{{track_dict_list.0.explicit }}</td>
-        </tr>
-        <tr>
-          <td>External URLs</td>
-          <td>{{track_dict_list.0.external_urls }}</td>
-        </tr>
-        <tr>
-          <td>Is Local</td>
-          <td>{{track_dict_list.0.is_local }}</td>
-        </tr>
-
-        <tr>
-          <td>Track Number</td>
-          <td>{{track_dict_list.0.track_number }}</td>
-        </tr>
-
-        <tr>
-          <td>Danceability</td>
-          <td>{{ track_dict_list.0.audio_features.danceability }}</td>
-        </tr>
-        <tr>
-          <td>Energy</td>
-          <td>{{ track_dict_list.0.audio_features.energy }}</td>
-        </tr>
-        <tr>
-          <td>Key</td>
-          <td>{{ track_dict_list.0.audio_features.key }}</td>
-        </tr>
-        <tr>
-          <td>Loudness</td>
-          <td>{{ track_dict_list.0.audio_features.loudness }}</td>
-        </tr>
-        <tr>
-          <td>Mode</td>
-          <td>{{ track_dict_list.0.audio_features.mode }}</td>
-        </tr>
-        <tr>
-          <td>Speechiness</td>
-          <td>{{ track_dict_list.0.audio_features.speechiness }}</td>
-        </tr>
-        <tr>
-          <td>Acousticness</td>
-          <td>{{ track_dict_list.0.audio_features.acousticness }}</td>
-        </tr>
-        <tr>
-          <td>Instrumentalness</td>
-          <td>{{ track_dict_list.0.audio_features.instrumentalness }}</td>
-        </tr>
-        <tr>
-          <td>Liveness</td>
-          <td>{{ track_dict_list.0.audio_features.liveness }}</td>
-        </tr>
-        <tr>
-          <td>Valence</td>
-          <td>{{ track_dict_list.0.audio_features.valence }}</td>
-        </tr>
-        <tr>
-          <td>Tempo</td>
-          <td>{{ track_dict_list.0.audio_features.tempo }}</td>
-        </tr>
-        <tr>
-          <td>Duration (ms)</td>
-          <td>{{ track_dict_list.0.audio_features.duration_ms }}</td>
-        </tr>
-        <tr>
-          <td>Time Signature</td>
-          <td>{{ track_dict_list.0.audio_features.time_signature }}</td>
-        </tr>
-
-
+    <div id="detailsTable" class="col-span-2" style="display: none;">
+      <table class="border-collapse w-full">
+        <thead>
+          <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <th class="py-3 px-16 text-left">Variable Name</th>
+            <th class="py-3 px-6 text-left">Value</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 text-sm font-light">
+          {% for key, value in track_dict_list.0.items %}
+          {% if key == "audio_features" %}
+          
+          {% else %}
+          <tr class="border-b border-gray-200 hover:bg-gray-100">
+            <td class="py-3 px-6 text-left">{{key}}</td>
+            <td class="py-3 px-6 text-left">{{value}}</td>
+          </tr>
+          {% endif %}
+          {% endfor %}
       </table>
 
     </div>
 
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="btn-group">
-
-
-      </div>
-    </div>
+    
   </div>
 </div>
 
@@ -283,10 +164,10 @@
     var detailsButton = document.getElementById("detailsButton");
     if (detailsTable.style.display === "none") {
       detailsTable.style.display = "table";
-      detailsButton.innerHTML = "More";
+      detailsButton.innerHTML = "Less";
     } else {
       detailsTable.style.display = "none";
-      detailsButton.innerHTML = "Less";
+      detailsButton.innerHTML = "More";
     }
   }
 </script>
